@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Login - SkyNet S.A.</title>
+
+    <style>
+        body { font-family: Arial; text-align: center; margin: 50px; }
+        input, button { margin: 10px; padding: 10px; }
+    </style>
+    
+  
+    </html>
+
+</head>
+<body>
+    <h1>Login SkyNet S.A.</h1>
+    <input type="text" id="username" placeholder="Usuario (admin/supervisor/technician)">
+    <button onclick="login()">Iniciar Sesión</button>
+    <script>
+        function login() {
+            const user = document.getElementById('username').value;
+            localStorage.setItem('role', user); // Simula rol
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+
+</body>
+
+
+
+
+
+
+

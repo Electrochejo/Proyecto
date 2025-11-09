@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Reportes - SkyNet S.A.</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 10px; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>Reportes</h1>
+    <table id="reports-table">
+        <thead>
+            <tr><th>ID</th><th>Estado</th><th>Cliente</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <button onclick="generatePDF()">Descargar PDF</button>
+    <script>
+        async function loadReports() {
+            const res = await fetch('http://localhost:5500/api/visits');
+            const data = await res.json();
+            const tbody = document.querySelector('#reports-table tbody');
+            tbody.innerHTML = data.map(v => `<tr><td>${v.id}</td><td>${v.status}</td><td>${v.clientId}</td></tr>`).join('');
+        }
+        loadReports();
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text('Reporte de Visitas', 10, 10);
+            const rows = Array.from(document.querySelectorAll('#reports-table tbody tr'));
+            rows.forEach((row, i) => {
+                const cells = row.querySelectorAll('td');
+                doc.text(`${i + 1}. ${cells[1].textContent} - ${cells[2].textContent}`, 10, 20 + i * 10);
+            });
+            doc.save('reporte_visitas.pdf');
+        }
+    </script>
+</body>
+</html>
+
+

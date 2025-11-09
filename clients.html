@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Registrar Cliente - SkyNet S.A.</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        form { max-width: 400px; }
+        input, button { display: block; margin: 10px; padding: 10px; width: 100%; }
+        #map { height: 300px; width: 100%; }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY"></script>
+</head>
+<body>
+    <h1>Registrar Cliente</h1>
+    <form id="client-form">
+        <input type="text" id="name" placeholder="Nombre" required>
+        <input type="email" id="contact" placeholder="Contacto" required>
+        <input type="number" id="lat" placeholder="Latitud" step="0.0001" value="14.6349">
+        <input type="number" id="lng" placeholder="Longitud" step="0.0001" value="-90.5069">
+        <div id="map"></div>
+        <button type="submit">Guardar</button>
+    </form>
+    <script>
+        let map, marker;
+        function initMap() {
+            const center = { lat: 14.6349, lng: -90.5069 };
+            map = new google.maps.Map(document.getElementById('map'), { zoom: 10, center });
+            marker = new google.maps.Marker({ position: center, map });
+            map.addListener('click', (e) => {
+                marker.setPosition(e.latLng);
+                document.getElementById('lat').value = e.latLng.lat();
+                document.getElementById('lng').value = e.latLng.lng();
+            });
+        }
+        initMap();
+        document.getElementById('client-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const client = {
+                name: document.getElementById('name').value,
+                contact: document.getElementById('contact').value,
+                latitude: parseFloat(document.getElementById('lat').value),
+                longitude: parseFloat(document.getElementById('lng').value)
+            };
+            await fetch('http://localhost:5500/api/clients', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(client) });
+            alert('Cliente guardado');
+        });
+    </script>
+</body>
+</html>

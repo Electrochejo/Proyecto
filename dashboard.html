@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+      <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Dashboard - SkyNet S.A.</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        ul { list-style: none; }
+        li { padding: 10px; border: 1px solid #ccc; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Dashboard - Visitas en Tiempo Real</h1>
+    <ul id="visits-list"></ul>
+    <nav>
+        <a href="clients.html">Gestionar Clientes</a> | 
+        <a href="visits.html">Gestionar Visitas</a> | 
+        <a href="reports.html">Reportes</a>
+    </nav>
+    <script>
+        async function loadVisits() {
+            try {
+                const res = await fetch('http://localhost:5500/api/visits');
+                const visits = await res.json();
+                const list = document.getElementById('visits-list');
+                list.innerHTML = visits.map(v => `<li>Estado: ${v.status} | Cliente: ${v.clientId}</li>`).join('');
+            } catch (e) {
+                console.error('Error cargando visitas');
+            }
+        }
+        loadVisits();
+        // Simula tiempo real (cada 5s)
+        setInterval(loadVisits, 5000);
+    </script>
+</body>
+
+</html>
+
