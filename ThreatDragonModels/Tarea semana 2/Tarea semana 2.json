@@ -1,0 +1,22 @@
+{
+  "version": "2.6.2",
+  "release_version": "1.0.0",
+  "released_at": "2026-10-10",
+  "summary": {
+    "title": "Tarea semana 2",
+    "owner": "Estudiante responsable del proyecto",
+    "description": "BancoSeguro es una aplicación bancaria web y móvil ficticia que permite a los clientes autenticarse, consultar saldos y movimientos, y realizar transferencias bancarias. El sistema está compuesto por un servicio de autenticación, un módulo de gestión de cuentas, un módulo de procesamiento de transferencias y una base de datos bancaria que almacena información de clientes, cuentas y transacciones. También se comunica con un servicio externo de notificaciones para informar sobre las operaciones realizadas.\n\nEl objetivo del modelo es identificar y analizar amenazas de ciberseguridad mediante la metodología STRIDE, considerando la suplantación de identidad, la manipulación de datos, el repudio de transacciones, la divulgación de información, la denegación de servicio y la elevación de privilegios. Se establecen fronteras de confianza entre el cliente y el backend bancario, así como entre el backend y el servicio externo de notificaciones.\n\nEl modelo contempla amenazas relacionadas con el acceso no autorizado a cuentas, la alteración de transferencias, la exposición de información financiera, la interrupción de servicios y la modificación indebida de registros. Se proponen medidas de mitigación basadas en autenticación multifactor, control de acceso, cifrado, validación de operaciones, auditoría y protección contra solicitudes maliciosas. Este modelo tiene fines académicos y no representa la arquitectura de una institución bancaria real.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Estudiante responsable"
+      }
+    ],
+    "diagrams": [],
+    "diagramTop": 1,
+    "reviewer": "Docente del curso",
+    "threatTop": 0
+  }
+}
