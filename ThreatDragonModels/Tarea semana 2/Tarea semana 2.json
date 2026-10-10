@@ -18,9 +18,9 @@
       {
         "id": 2,
         "title": "DFD — Modelo de amenazas STRIDE BancoSegurovo diagrama STRIDE",
-        "diagramType": "STRIDE",
-        "placeholder": "Descripción de nuevo diagrama STRIDE",
-        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "diagramType": "Genérico",
+        "placeholder": "Descripción de nuevo diagrama genérico",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
         "version": "2.6.2",
         "cells": [],
         "description": "Diagrama de flujo de datos (DFD) de una aplicación bancaria ficticia denominada BancoSeguro. Representa dos entidades externas, tres procesos, un almacén de datos, los flujos de información y dos fronteras de confianza. El objetivo es identificar amenazas de suplantación de identidad, manipulación de datos, repudio, divulgación de información, denegación de servicio y elevación de privilegios mediante la metodología STRIDE, así como definir mitigaciones de seguridad y casos de abuso."
